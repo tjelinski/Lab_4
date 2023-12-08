@@ -24,7 +24,7 @@ public class Lab_4 {
         // metoda getValue() zwraca wartość
         int retrievedValue = myLab_4.getValue();
         int retrievedValue2 = mysecondLab_4.getValue();
-
+        System.gc(); //sugestia wywołania garbage collector'a jednak decyduje o tym JVM (Java Virtual Machine
         // wyświetlenie
         System.out.println("Value: " + retrievedValue);
         System.out.println("Value: " + retrievedValue2);
