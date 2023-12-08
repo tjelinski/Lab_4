@@ -6,6 +6,7 @@ import java.util.*;
 public class Lab_4 {
     // pola
     int value;
+    static  int i,j;
     private  String privateField;
     public  String publicField;
     protected  String protectedField;
@@ -65,6 +66,24 @@ public class Lab_4 {
         System.out.println("Private: " + privateField2);
         System.out.println("Public: " + publicField2);
         System.out.println("Protected: " + protectedField2);
+
+        //5. tablica dwuwymiarowa z liczbami losowymi, sort, histogram
+        int [][] tab = new int [10] [10];
+        Random random = new Random();
+
+        for (int i = 0; i<tab.length; i++){
+            for ( int j =0; j<tab[i].length;j++) {
+                tab[i][j] =random.nextInt(26) + 20;
+            }
+        }
+        // Only in chrome copy link to text
+        // https://stackoverflow.com/questions/15452429/java-arrays-sort-2d-array#:~:text=Decreasing/increasing%20order%20for%20an%20integer%20array%20of%202%20dimension%20you%20can%20use%3A
+
+        Arrays.sort(tab, ( i, j) -> Integer.compare(i[0],j[0]));
+        for (int i = 0; i < tab.length; i++) {
+            System.out.println(Arrays.toString(tab[i]));
+        }
+
     }
 }
 
