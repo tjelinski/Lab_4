@@ -43,14 +43,23 @@ public class Lab_4 {
         return privateField + publicField + protectedField;
     }
 
+    public class LegacyLab_4 extends Lab_4{
+        public LegacyLab_4() {
+            super(); // wywołanie konstruktora klsy bazowej
+            Lab_4 myLab_4_5 = new Lab_4(5, "Protected method ", "from class", " Lab_4");
+            String protectedField5 = myLab_4_5.protectedMethod();
+            System.out.println(protectedField5);
+            System.out.println();
+        }
+    }
+
     public static void main(String[] args) {
         Lab_4 myLab_4 = new Lab_4(); // utw. obiektu konstruktor domyślny
         Lab_4 myLab_4_1 = new Lab_4(10, "It's", "with",  "parametr"); // utw. obiektu klasy i przekazanie ustawionej wartości 10
-        Lab_4 myLab_4_2 = new Lab_4(1, "This ", "is", " private");
-        Lab_4 myLab_4_3 = new Lab_4(2, "This ", "is", " public");
-        Lab_4 myLab_4_4 = new Lab_4(3, "This ", "is", " protected");
-
-
+        Lab_4 myLab_4_2 = new Lab_4(2, "This ", "is", " private");
+        Lab_4 myLab_4_3 = new Lab_4(3, "This ", "is", " public");
+        Lab_4 myLab_4_4 = new Lab_4(4, "This ", "is", " protected");
+        Lab_4.LegacyLab_4 legacyLab_4 = myLab_4.new LegacyLab_4();
 
         // metody zwracaja wartość
         int retrievedValue = myLab_4.getValue();
@@ -58,14 +67,17 @@ public class Lab_4 {
         String privateField2 = myLab_4_2.privateMethod();
         String publicField2 = myLab_4_3.publicMethod();
         String protectedField2 = myLab_4_4.protectedMethod();
+        String protectedField5 = myLab_4_4.protectedMethod();
 
         System.gc(); //sugestia wywołania garbage collector'a jednak decyduje o tym JVM (Java Virtual Machine) w sytuacjach gdy jest to konieczne
+
         // wyświetlenie
         System.out.println("Value: " + retrievedValue);
         System.out.println("Value: " + retrievedValue2);
         System.out.println("Private: " + privateField2);
         System.out.println("Public: " + publicField2);
         System.out.println("Protected: " + protectedField2);
+        System.out.println();
 
         //5. tablica dwuwymiarowa z liczbami losowymi, sort, histogram
         int [][] tab = new int [10] [10];
@@ -82,6 +94,20 @@ public class Lab_4 {
         Arrays.sort(tab, ( i, j) -> Integer.compare(i[0],j[0]));
         for (int i = 0; i < tab.length; i++) {
             System.out.println(Arrays.toString(tab[i]));
+            System.out.println();
+        }
+
+        // Zlicz ilość wystąpień poszczególnych liczb
+        Map<Integer, Integer> histogram = new HashMap<>();
+        for (int[] row : tab) {
+            for (int value : row) {
+                histogram.put(value, histogram.getOrDefault(value, 0) + 1);
+            }
+        }
+
+        // Wyświetl histogram
+        for (Map.Entry<Integer, Integer> entry : histogram.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
         }
 
     }
