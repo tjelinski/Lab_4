@@ -88,7 +88,7 @@ public class Lab_4 {
         // Wyszukaj dowolny element z tablicy obiektów
         String searchedField = "is";
         for (Lab_4 lab : labArray) {
-            if (lab.fieldTwo.contains(searchedField)) {
+            if (lab.fieldTwo != null && lab.fieldTwo.contains(searchedField)) {
                 System.out.println("Found element in labArray: " + lab.fieldTwo);
                 break;
             }
